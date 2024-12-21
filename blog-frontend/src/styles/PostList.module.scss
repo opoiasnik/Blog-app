@@ -1,0 +1,118 @@
+.container {
+    padding: 2rem;
+  }
+  
+  .title {
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  
+  .postCard {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .postCard:hover {
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .postTitle {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #1976d2;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  
+  .postContent {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .readMoreButton {
+    margin-top: 10px;
+    border-radius: 20px;
+    text-transform: capitalize;
+  }
+  
+  .deleteButton {
+    margin-top: 10px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    color: #d32f2f;
+    border-color: #d32f2f;
+  
+    &:hover {
+      background-color: rgba(211, 47, 47, 0.1);
+    }
+  }
+  
+  .searchField {
+    margin: 20px auto;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .addPostFab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: linear-gradient(45deg, #1976d2, #42a5f5);
+  
+    &:hover {
+      background: linear-gradient(45deg, #1565c0, #1e88e5);
+    }
+  }
+  
+  .dialog {
+    .MuiDialogTitle-root {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  
+    .MuiDialogContent-root {
+      padding: 1.5rem;
+    }
+  
+    .MuiDialogActions-root {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  

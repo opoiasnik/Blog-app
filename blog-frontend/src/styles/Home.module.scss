@@ -1,0 +1,30 @@
+.homeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+  }
+  
+  .title {
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .subtitle {
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+  
+  .buttonContainer {
+    margin-top: 20px;
+  }
+  
+  .exploreButton {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+  }
+  
