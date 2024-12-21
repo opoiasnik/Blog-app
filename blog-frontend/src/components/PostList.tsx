@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   useGetPostsQuery,
   useCreatePostMutation,
+  useUpdatePostMutation,
   useDeletePostMutation,
 } from '../store/postsSlice';
 import {
@@ -32,13 +33,13 @@ interface Post {
 }
 
 const PostList: React.FC = () => {
-    const { data: posts = [], isLoading, error } = useGetPostsQuery(undefined, {
-        skip: false,
-      });
-      
+  const { data: posts = [], isLoading, error } = useGetPostsQuery();
   const [createPost] = useCreatePostMutation();
+  const [updatePost] = useUpdatePostMutation();
   const [deletePost] = useDeletePostMutation();
+
   const [newPost, setNewPost] = useState<Post>({ id: 0, title: '', content: '' });
+  const [editPost, setEditPost] = useState<Post | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -54,12 +55,20 @@ const PostList: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const handleAddPost = async () => {
-    if (newPost.title.trim() && newPost.content.trim()) {
+  const handleAddOrEditPost = async () => {
+    if (editPost) {
+      await updatePost(editPost);
+    } else {
       await createPost(newPost);
-      setNewPost({ id: 0, title: '', content: '' });
-      setIsDialogOpen(false);
     }
+    setNewPost({ id: 0, title: '', content: '' });
+    setEditPost(null);
+    setIsDialogOpen(false);
+  };
+
+  const handleEditPost = (post: Post) => {
+    setEditPost(post);
+    setIsDialogOpen(true);
   };
 
   const handleDeletePost = async (id: number) => {
@@ -151,6 +160,14 @@ const PostList: React.FC = () => {
                   </Button>
                   <Button
                     variant="outlined"
+                    color="primary"
+                    onClick={() => handleEditPost(post)}
+                    className={styles.editButton}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="outlined"
                     color="secondary"
                     onClick={() => handleDeletePost(post.id)}
                     className={styles.deleteButton}
@@ -174,22 +191,27 @@ const PostList: React.FC = () => {
       <Fab
         color="primary"
         className={styles.addPostFab}
-        onClick={() => setIsDialogOpen(true)}
+        onClick={() => {
+          setEditPost(null);
+          setIsDialogOpen(true);
+        }}
       >
         <AddIcon />
       </Fab>
 
       <Dialog open={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
-        <DialogTitle>Add New Post</DialogTitle>
+        <DialogTitle>{editPost ? 'Edit Post' : 'Add New Post'}</DialogTitle>
         <DialogContent>
           <TextField
             label="Title"
             variant="outlined"
             fullWidth
             margin="normal"
-            value={newPost.title}
+            value={editPost ? editPost.title : newPost.title}
             onChange={(e) =>
-              setNewPost({ ...newPost, title: e.target.value })
+              editPost
+                ? setEditPost({ ...editPost, title: e.target.value })
+                : setNewPost({ ...newPost, title: e.target.value })
             }
           />
           <TextField
@@ -199,9 +221,11 @@ const PostList: React.FC = () => {
             multiline
             rows={4}
             margin="normal"
-            value={newPost.content}
+            value={editPost ? editPost.content : newPost.content}
             onChange={(e) =>
-              setNewPost({ ...newPost, content: e.target.value })
+              editPost
+                ? setEditPost({ ...editPost, content: e.target.value })
+                : setNewPost({ ...newPost, content: e.target.value })
             }
           />
         </DialogContent>
@@ -209,21 +233,25 @@ const PostList: React.FC = () => {
           <Button
             variant="contained"
             color="primary"
-            onClick={handleAddPost}
-            disabled={!newPost.title.trim() || !newPost.content.trim()}
+            onClick={handleAddOrEditPost}
+            disabled={
+              !(editPost
+                ? editPost.title.trim() && editPost.content.trim()
+                : newPost.title.trim() && newPost.content.trim())
+            }
           >
-            Add Post
+            {editPost ? 'Save Changes' : 'Add Post'}
           </Button>
           <Button
             variant="outlined"
             onClick={() => {
-                setIsDialogOpen(false);
-                setNewPost({ id: 0, title: '', content: '' });
+              setIsDialogOpen(false);
+              setNewPost({ id: 0, title: '', content: '' });
+              setEditPost(null);
             }}
-            >
+          >
             Cancel
-        </Button>
-
+          </Button>
         </DialogActions>
       </Dialog>
     </Container>
