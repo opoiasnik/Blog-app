@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, BeforeInsert } from 'typeorm';
 import { Post } from './post.entity';
 
 @Entity('comments')
@@ -9,11 +9,15 @@ export class Comment {
   @Column()
   content: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: 'timestamp' })
   created_at: Date;
 
   @ManyToOne(() => Post, (post) => post.comments, { onDelete: 'CASCADE' })
-@JoinColumn({ name: 'post_id' })
-post: Post;
+  @JoinColumn({ name: 'post_id' })
+  post: Post;
 
+  @BeforeInsert()
+  setCreatedAt() {
+    this.created_at = new Date();
+  }
 }
