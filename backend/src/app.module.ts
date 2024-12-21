@@ -14,7 +14,7 @@ import { PostsModule } from './posts/posts.module';
       database: 'railway',
       autoLoadEntities: true,
       logging: true,
-      synchronize: true
+      
     }),
     PostsModule,
   ],
