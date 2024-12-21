@@ -7,11 +7,11 @@ import { PostsModule } from './posts/posts.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
+      host: 'junction.proxy.rlwy.net',
+      port: 27849,
       username: 'postgres',
-      password: 'Oleh20052005!',
-      database: 'Blogs',
+      password: 'lmktimvohnHhOuVzpBuYdaclbxgnMxTh',
+      database: 'railway',
       autoLoadEntities: true,
       logging: true,
     }),
