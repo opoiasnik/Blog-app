@@ -37,26 +37,24 @@ export const postsApi = createApi({
       invalidatesTags: ['Posts'],
     }),
     addComment: builder.mutation({
-        query: ({ postId, content }) => ({
-           url: `/posts/${postId}/comments`,
-           method: 'POST',
-           body: { content },
-        }),
-        invalidatesTags: (_, __, { postId }) => [
-            { type: 'Comments', id: postId },
-            { type: 'Posts', id: postId },
-          ],
-     }),
-     
-     
+      query: ({ postId, content }) => ({
+        url: `/posts/${postId}/comments`,
+        method: 'POST',
+        body: { content },
+      }),
+      invalidatesTags: (_, __, { postId }) => [
+        { type: 'Comments', id: postId },
+        { type: 'Posts', id: postId },
+      ],
+    }),
   }),
 });
 
 export const {
-    useGetPostsQuery,
-    useGetPostQuery,
-    useCreatePostMutation,
-    useDeletePostMutation,
-    useAddCommentMutation,
-  } = postsApi;
-  
+  useGetPostsQuery,
+  useGetPostQuery,
+  useCreatePostMutation,
+  useUpdatePostMutation,
+  useDeletePostMutation,
+  useAddCommentMutation,
+} = postsApi;
