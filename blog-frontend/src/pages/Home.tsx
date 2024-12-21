@@ -16,7 +16,7 @@ const Home: React.FC = () => {
           transition={{ duration: 1 }}
         >
           <Typography variant="h2" align="center" className={styles.title}>
-            Welcome to the Blog
+            Welcome to the Blogфыв
           </Typography>
           <Typography variant="h5" align="center" className={styles.subtitle}>
             Explore posts, share your thoughts, and join the conversation.
