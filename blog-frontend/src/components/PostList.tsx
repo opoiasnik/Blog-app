@@ -57,7 +57,7 @@ const PostList: React.FC = () => {
 
   const handleAddOrEditPost = async () => {
     if (editPost) {
-      await updatePost(editPost);
+      await updatePost({ id: editPost.id, title: editPost.title, content: editPost.content });
     } else {
       await createPost(newPost);
     }
