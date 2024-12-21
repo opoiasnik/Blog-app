@@ -33,7 +33,9 @@ interface Post {
 }
 
 const PostList: React.FC = () => {
- const { data: posts = [], isLoading, error } = useGetPostsQuery();
+ const { data: posts = [], isLoading, error } = useGetPostsQuery(undefined, {
+        skip: false,
+      });
 
   const [createPost] = useCreatePostMutation();
   const [updatePost] = useUpdatePostMutation();
