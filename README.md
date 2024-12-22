@@ -106,7 +106,9 @@ If you want to run the project locally, follow these steps. Please note that the
      - **Username**: Your local PostgreSQL username.
      - **Password**: Your local PostgreSQL password.
      - **Database**: The name of your local database.
-4. Start the server with `npm run start`.
+4. Update any references in the backend code that point to external URLs (e.g., the deployed frontend URL) to point to your local frontend. Replace:
+   - `https://luminous-semifreddo-9fdb6d.netlify.app` with `http://localhost:3000` (or your local frontend URL).
+5. Start the server with `npm run start`.
 
 ### Frontend
 1. Clone the repository and navigate to the `frontend` folder.
@@ -122,3 +124,4 @@ If you want to run the project locally, follow these steps. Please note that the
 - The backend should run on `http://localhost:4000` by default unless you specify a different port.
 - The frontend should communicate with the local backend server.
 - Update any `.env` or configuration files to reflect your local environment settings.
+
