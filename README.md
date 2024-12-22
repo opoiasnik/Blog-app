@@ -63,28 +63,8 @@ This blog application is a full-stack project that implements a blogging platfor
 - Frontend hosted on [Netlify](https://luminous-semifreddo-9fdb6d.netlify.app/).
 - Database configured on Railway with PostgreSQL (connection credentials provided below).
 
----
 
-## Setup Instructions
-
-### Backend
-1. Clone the repository and navigate to the backend directory.
-2. Install dependencies: `npm install`.
-3. Configure the database connection using PostgreSQL.
-   - Use **pgAdmin** with the following credentials:
-     - **Host**: `junction.proxy.rlwy.net`
-     - **Port**: `27849`
-     - **Username**: `postgres`
-     - **Password**: `lmktimvohnHhOuVzpBuYdaclbxgnMxTh`
-     - **Database**: `railway`
-4. Run the server: `npm run start`.
-
-### Frontend
-1. Clone the repository and navigate to the frontend directory.
-2. Install dependencies: `npm install`.
-3. Start the development server: `npm run dev`.
-
-### Deployment Links
+## Deployment Links
 - **Frontend**: [Netlify](https://luminous-semifreddo-9fdb6d.netlify.app/)
 - **Backend**: [Railway](https://blog-app-production-2574.up.railway.app/posts)
 
@@ -106,8 +86,28 @@ This blog application is a full-stack project that implements a blogging platfor
 
 ---
 
-## Notes and Assumptions
-- The database is pre-seeded with some test data.
-- Ensure both frontend and backend are running for full functionality.
+## Local Setup Instructions
+
+If you want to run the project locally, follow these steps. Please note that the deployment-specific links (e.g., Netlify and Railway URLs) in the code should be updated to match your local environment.
+
+### Backend
+1. Clone the repository and navigate to the `backend` folder.
+2. Run `npm install` to install dependencies.
+3. Configure the database connection in app.module.ts:
+   See the article " How to Connect to the Database with pgAdmin "
+4. Start the server with `npm run start`.
+
+### Frontend
+1. Clone the repository and navigate to the `frontend` folder.
+2. Run `npm install` to install dependencies.
+3. Update the API endpoints in the frontend code:
+   - Replace all instances of the deployed backend URL (`https://blog-app-production-2574.up.railway.app`) with your local backend URL (e.g., `http://localhost:4000/posts`).
+4. Start the development server with `npm run dev`.
 
 ---
+
+## Notes for Local Development
+- Ensure that PostgreSQL is running locally and the database is properly configured.
+- The backend should run on `http://localhost:4000` by default unless you specify a different port.
+- The frontend should communicate with the local backend server.
+- Update any `.env` or configuration files to reflect your local environment settings.
