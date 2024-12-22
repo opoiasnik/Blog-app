@@ -1,5 +1,10 @@
 # Blog Application
 
+## Live Project
+- **Frontend (Live Link)**: [Netlify](https://luminous-semifreddo-9fdb6d.netlify.app/)
+
+---
+
 ## Description
 This blog application is a full-stack project that implements a blogging platform. Users can perform CRUD operations on posts and add comments to specific posts. The project highlights the integration of a RESTful API, server and client-side validation, error handling, and a responsive user interface.
 
@@ -63,6 +68,7 @@ This blog application is a full-stack project that implements a blogging platfor
 - Frontend hosted on [Netlify](https://luminous-semifreddo-9fdb6d.netlify.app/).
 - Database configured on Railway with PostgreSQL (connection credentials provided below).
 
+---
 
 ## Deployment Links
 - **Frontend**: [Netlify](https://luminous-semifreddo-9fdb6d.netlify.app/)
@@ -93,8 +99,13 @@ If you want to run the project locally, follow these steps. Please note that the
 ### Backend
 1. Clone the repository and navigate to the `backend` folder.
 2. Run `npm install` to install dependencies.
-3. Configure the database connection in app.module.ts:
-   See the article " How to Connect to the Database with pgAdmin "
+3. Configure the database connection in `app.module.ts`:
+   - Update the database connection configuration to use your local PostgreSQL instance:
+     - **Host**: `localhost`
+     - **Port**: The port your PostgreSQL is running on (e.g., `5432`).
+     - **Username**: Your local PostgreSQL username.
+     - **Password**: Your local PostgreSQL password.
+     - **Database**: The name of your local database.
 4. Start the server with `npm run start`.
 
 ### Frontend
