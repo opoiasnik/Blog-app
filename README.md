@@ -89,6 +89,7 @@ This blog application is a full-stack project that implements a blogging platfor
    - **Username**: `postgres`
    - **Password**: `lmktimvohnHhOuVzpBuYdaclbxgnMxTh`
 5. Save and connect to the server.
+6. Once connected, navigate to the database named `railway`.
 
 ---
 
