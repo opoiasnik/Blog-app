@@ -4,6 +4,8 @@ import { useGetPostQuery, useAddCommentMutation } from '../store/postsSlice';
 import { motion } from 'framer-motion';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import styles from '../styles/Post.module.scss';
 
 interface Comment {
@@ -31,18 +33,29 @@ const Post: React.FC = () => {
   
   const [addComment] = useAddCommentMutation();
   const [comment, setComment] = useState<string>('');
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
 
   if (isLoading) return <div>Loading...</div>;
   if (error || !post) return <div>Error loading post</div>;
 
   const handleAddComment = async (): Promise<void> => {
-    if (comment.trim()) {
-      await addComment({
-        postId: Number(id),
-        content: `${randomEmoji()} ${comment}`,
-      });
-      setComment('');
+    if (comment.trim().length < 5) {
+      setSnackbarMessage('Comment must be at least 5 characters long.');
+      setSnackbarOpen(true);
+      return;
     }
+    await addComment({
+      postId: Number(id),
+      content: `${randomEmoji()} ${comment}`,
+    });
+    setComment('');
+    setSnackbarMessage('Comment added successfully!');
+    setSnackbarOpen(true);
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
   };
 
   return (
@@ -129,6 +142,17 @@ const Post: React.FC = () => {
           </Button>
         </motion.div>
       </div>
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert severity="info" onClose={handleCloseSnackbar}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
