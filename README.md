@@ -1,7 +1,7 @@
 # Blog Application
 
 ## Description
-This blog application is a full-stack project demonstrating the implementation of a blogging platform. Users can perform CRUD operations on posts and add comments to specific posts. The project showcases your skills in full-stack development, RESTful API design, server and client validation, and error handling.
+This blog application is a full-stack project that implements a blogging platform. Users can perform CRUD operations on posts and add comments to specific posts. The project highlights the integration of a RESTful API, server and client-side validation, error handling, and a responsive user interface.
 
 ---
 
@@ -61,7 +61,7 @@ This blog application is a full-stack project demonstrating the implementation o
 ### Deployment
 - Backend hosted on [Railway](https://blog-app-production-2574.up.railway.app/posts).
 - Frontend hosted on [Netlify](https://luminous-semifreddo-9fdb6d.netlify.app/).
-- Database configured on Railway with PostgreSQL (connection credentials are included in the codebase).
+- Database configured on Railway with PostgreSQL (connection credentials provided below).
 
 ---
 
@@ -72,11 +72,11 @@ This blog application is a full-stack project demonstrating the implementation o
 2. Install dependencies: `npm install`.
 3. Configure the database connection using PostgreSQL.
    - Use **pgAdmin** with the following credentials:
-     - Host: `junction.proxy.rlwy.net`
-     - Port: `27849`
-     - Username: `postgres`
-     - Password: `lmktimvohnHhOuVzpBuYdaclbxgnMxTh`
-     - Database: `railway`
+     - **Host**: `junction.proxy.rlwy.net`
+     - **Port**: `27849`
+     - **Username**: `postgres`
+     - **Password**: `lmktimvohnHhOuVzpBuYdaclbxgnMxTh`
+     - **Database**: `railway`
 4. Run the server: `npm run start`.
 
 ### Frontend
@@ -90,11 +90,19 @@ This blog application is a full-stack project demonstrating the implementation o
 
 ---
 
-## How to Use
-1. Visit the frontend link to interact with the application.
-2. View the list of posts, search or filter posts.
-3. Create, edit, or delete posts.
-4. Add comments to specific posts.
+## How to Connect to the Database with pgAdmin
+
+1. Open **pgAdmin** and log in.
+2. Click on "Add New Server".
+3. In the "General" tab:
+   - **Name**: Enter any name (e.g., `BlogApp`).
+4. In the "Connection" tab:
+   - **Host name/address**: `junction.proxy.rlwy.net`
+   - **Port**: `27849`
+   - **Maintenance database**: `railway`
+   - **Username**: `postgres`
+   - **Password**: `lmktimvohnHhOuVzpBuYdaclbxgnMxTh`
+5. Save and connect to the server.
 
 ---
 
@@ -103,4 +111,3 @@ This blog application is a full-stack project demonstrating the implementation o
 - Ensure both frontend and backend are running for full functionality.
 
 ---
-
